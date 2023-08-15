@@ -1,90 +1,121 @@
-<?php
-class MyTransport{
-    protected $name;
-    protected $speed;
+<?
 
-    public function __construct($name,$speed){
-        $this->name=$name;
-        $this->speed=$speed;
+class MyTransport
+{
+    protected string $name;
+    protected int $speed;
+
+    public function __construct(string $name, int $speed)
+    {
+        $this->name = $name;
+        $this->speed = $speed;
     }
-    public function getName(){
+
+    public function getName(): string
+    {
         return $this->name;
     }
-    public function getSpeed(){
+
+    public function getSpeed(): int
+    {
         return $this->speed;
     }
-    public function getInfo(){
-        return"Transport: {$this->name}, Speed: {$this->speed} km/h";
+
+    public function getInfo(): string
+    {
+        return "Transport: {$this->name}, Speed: {$this->speed} km/h";
     }
 }
-class Cars extends MyTransport{
-    private $numDoors;
-    public function __construct($name, $speed, $numDoors)
+
+class Cars extends MyTransport
+{
+    private int $numDoors;
+
+    public function __construct(string $name, int $speed, int $numDoors)
     {
         parent::__construct($name, $speed);
-        $this->numDoors=$numDoors;
+        $this->numDoors = $numDoors;
     }
 
-    public function getNumDoors(){
+    public function getNumDoors(): int
+    {
         return $this->numDoors;
     }
-    public function carWorker(){
-        return "{$this->name}  working now!";
+
+    public function carWorker(): string
+    {
+        return "{$this->name} is working now!";
     }
-    public function getInfo()
+
+    public function getInfo(): string
     {
         return parent::getInfo() . ", Door numbers: {$this->numDoors}";
     }
 }
-class MotoCycle extends MyTransport{
-    private $numGears;
-    public function __construct($name, $speed, $numGears)
+
+class MotoCycle extends MyTransport
+{
+    private int $numGears;
+
+    public function __construct(string $name, int $speed, int $numGears)
     {
         parent::__construct($name, $speed);
-        $this->numGears=$numGears;
+        $this->numGears = $numGears;
     }
-    public function getNumGears(){
+
+    public function getNumGears(): int
+    {
         return $this->numGears;
     }
-    public function motoCyjleWorker(){
-        return "{$this->name}  working now!";
+
+    public function motoCycleWorker(): string
+    {
+        return "{$this->name} is working now!";
     }
-    public function getInfo()
+
+    public function getInfo(): string
     {
         return parent::getInfo() . ", Gear numbers: {$this->numGears}";
     }
 }
 
-class Boats extends myTransport{
-    private $boatType;
-    public function __construct($name, $speed, $boatType)
+class Boats extends MyTransport
+{
+    private string $boatType;
+
+    public function __construct(string $name, int $speed, string $boatType)
     {
         parent::__construct($name, $speed);
-        $this->boatType=$boatType;
+        $this->boatType = $boatType;
     }
-    public function getBoatType(){
+
+    public function getBoatType(): string
+    {
         return $this->boatType;
     }
-    public function  boatWorker(){
-        return "{$this->boatType} working now!";
+
+    public function boatWorker(): string
+    {
+        return "{$this->boatType} is working now!";
     }
-    public function getInfo()
+
+    public function getInfo(): string
     {
         return parent::getInfo() . ", Boat Type: {$this->boatType}";
     }
 }
-function echoMyTransportInformation($myTransportsArray){
-    foreach ($myTransportsArray as $transport){
+
+function echoMyTransportInformation(array $myTransportsArray): void
+{
+    foreach ($myTransportsArray as $transport) {
         echo $transport->getInfo() . "\n";
     }
 }
 
-// it's fany
+$car = new Cars("Audi", 250, 2);
+$motoCycle = new MotoCycle("Ducati", 320, 2);
+$boat = new Boats("Wicroria", 123, "Submarine");
 
-$car = new Cars("Audi", 250,2);
-$motoCykle = new MotoCycle("Ducati",320,2);
-$boat = new Boats("Wicroria",123,"Submarine");
-
-$myTransports = [$car, $motoCykle, $boat];
+$myTransports = [$car, $motoCycle, $boat];
 
 echoMyTransportInformation($myTransports);
