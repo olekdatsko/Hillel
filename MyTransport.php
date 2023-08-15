@@ -79,6 +79,8 @@ function echoMyTransportInformation($myTransportsArray){
     }
 }
 
+// it's fany
+
 $car = new Cars("Audi", 250,2);
 $motoCykle = new MotoCycle("Ducati",320,2);
 $boat = new Boats("Wicroria",123,"Submarine");
